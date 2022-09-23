@@ -1,6 +1,5 @@
 from random import randint
 
-
 class Robot:
     def __init__(self, name: str, age: int):
         self.name = name
@@ -25,17 +24,8 @@ class Robot:
         new_age = int(input())
         return new_age
 
-    @staticmethod
-    def get_starting_position_from_input():
-        print("Which row is your robot starting in?")
-        row = int(input())
-        print("Which column is your robot starting in?")
-        column = int(input())
-        return row, column
+    # def observe(self, world: World):
+    #     self.observations = world.get_observations(self.position)
 
     def say_hello(self):
         print(f"Hello my name is {self.name}, my age is {self.age}. My ID is {self.robot_id}")
-
-if __name__ == '__main__':
-    my_robot = Robot("Troy", 2)
-    my_robot.say_hello()
