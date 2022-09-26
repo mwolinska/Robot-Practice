@@ -1,4 +1,7 @@
 from random import randint
+from typing import Tuple
+
+from world import World
 
 class Robot:
     def __init__(self, name: str, age: int, position: Tuple[int, int]):
@@ -9,10 +12,18 @@ class Robot:
         self.direction = None
 
     @classmethod
-    def create_from_user_input(cls):
+    def create_random(cls, world: World):
+        robot_name = "Random Robot"
+        robot_age = randint(0, 10)
+        robot_position = cls.generate_random_starting_point(world)
+        return cls(robot_name, robot_age, robot_position)
+
+    @classmethod
+    def create_from_user_input(cls, world: World):
         robot_name = cls.get_name_from_input()
         robot_age = cls.get_age_from_input()
-        return cls(robot_name, robot_age)
+        robot_position = cls.get_starting_position_from_input(world)
+        return cls(robot_name, robot_age, robot_position)
 
     @staticmethod
     def get_name_from_input():
