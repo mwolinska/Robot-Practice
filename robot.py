@@ -60,7 +60,7 @@ class Robot:
 
     def give_position_update(self, world: World):
         quadrant = world.find_quadrant(self.position)
-        print(f"I am in position {self.position}, this is the {quadrant}. I am facing {self.direction}.")
+        print(f"I am in position {self.position}, this is the {quadrant} quadrant. I am facing {self.direction}.")
 
     def go_forward(self, world: World) -> World:
         new_row = copy.deepcopy(self.position[0])
