@@ -24,8 +24,20 @@ class Robot:
         new_age = int(input())
         return new_age
 
-    # def observe(self, world: World):
-    #     self.observations = world.get_observations(self.position)
+    @staticmethod
+    def get_starting_position_from_input(world: World):
+        print("Which row is your robot starting in?")
+        row = int(input())
+        print("Which column is your robot starting in?")
+        column = int(input())
+        return row, column
+
+    @staticmethod
+    def generate_random_starting_point(world: World):
+        position_row = randint(0, world.board.shape[1] - 1)
+        position_column = randint(0, world.board.shape[0] - 1)
+        return position_row, position_column
+
 
     def say_hello(self):
         print(f"Hello my name is {self.name}, my age is {self.age}. My ID is {self.robot_id}")
