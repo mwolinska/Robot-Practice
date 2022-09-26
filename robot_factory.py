@@ -36,3 +36,10 @@ class RobotFactory:
             return Robot.create_from_user_input(self.world)
         else:
             raise NotImplementedError
+
+    def deploy_all_robots_to_treasure_hunt(self):
+        for robot in self.population:
+            world = robot.find_treasure(self.world)
+            self.world = world
+
+        print("All robots found the treasure.")
