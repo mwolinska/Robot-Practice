@@ -1,6 +1,8 @@
+import random
 from random import randint
 from typing import Tuple
 
+from data_model import Compass
 from world import World
 
 class Robot:
@@ -9,7 +11,7 @@ class Robot:
         self.age = age
         self.robot_id = randint(0, 100)
         self.position = position
-        self.direction = None
+        self.direction = random.choice(list(Compass))
 
     @classmethod
     def create_random(cls, world: World):
