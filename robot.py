@@ -1,3 +1,4 @@
+import copy
 import random
 from random import randint
 from typing import Tuple
@@ -59,4 +60,46 @@ class Robot:
 
     def give_position_update(self, world: World):
         quadrant = world.find_quadrant(self.position)
-        print(f"I am in position {self.position}, this is the {quadrant}. I am facing {self.direction}.")
+        print(f"I am in position {self.position}, this is the {quadrant} quadrant. I am facing {self.direction}.")
+
+    def find_treasure(self, world: World):
+        self.say_hello()
+        self.give_position_update(world)
+        while self.position != world.treasure_position:
+            world = self.go_forward(world)
+            self.give_position_update(world)
+
+        print("I found the treasure!")
+
+    def go_forward(self, world: World) -> World:
+        new_row = copy.deepcopy(self.position[0])
+        new_column = copy.deepcopy(self.position[1])
+
+        if self.direction == Compass.NORTH:
+            new_row -= 1
+        elif self.direction == Compass.SOUTH:
+            new_row += 1
+        elif self.direction == Compass.WEST:
+            new_column -= 1
+        elif self.direction == Compass.EAST:
+            new_column += 1
+
+        if new_row < 0 or new_row >= world.board.shape[1] or new_column < 0 or new_column >= world.board.shape[0]:
+            print("Oh no, I hit a wall. I will turn 90 degrees.")
+            self.turn_90_deg_clockwise()
+        else:
+            self.position = new_row, new_column
+            world.board[new_row][new_column] = self.robot_id
+            print(world.board)
+        return world
+
+    def turn_90_deg_clockwise(self):
+        list_of_directions = list(Compass)
+        direction_index = list_of_directions.index(self.direction)
+
+        if direction_index == 3:
+            direction_index = 0
+        else:
+            direction_index += 1
+
+        self.direction = list_of_directions[direction_index]
