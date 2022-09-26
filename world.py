@@ -13,6 +13,7 @@ class World:
             size: tuple defining grid size of the world board in the order (row, column).
         """
         self.board = np.zeros((size[1], size[0]))
+        self.treasure_position = (0, 0)
 
     def find_quadrant(self, position_tuple: Tuple[int, int]) -> Quadrants:
         """Return quadrant based on position in board.
