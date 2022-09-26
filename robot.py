@@ -62,6 +62,15 @@ class Robot:
         quadrant = world.find_quadrant(self.position)
         print(f"I am in position {self.position}, this is the {quadrant} quadrant. I am facing {self.direction}.")
 
+    def find_treasure(self, world: World):
+        self.say_hello()
+        self.give_position_update(world)
+        while self.position != world.treasure_position:
+            world = self.go_forward(world)
+            self.give_position_update(world)
+
+        print("I found the treasure!")
+
     def go_forward(self, world: World) -> World:
         new_row = copy.deepcopy(self.position[0])
         new_column = copy.deepcopy(self.position[1])
