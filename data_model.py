@@ -6,3 +6,9 @@ class Quadrants (str, Enum):
     TOP_RIGHT = "top right"
     BOTTOM_LEFT = "bottom left"
     BOTTOM_RIGHT = "bottom right"
+
+class Compass(str, Enum):
+    NORTH = "North"
+    SOUTH = "South"
+    WEST = "West"
+    EAST = "East"
