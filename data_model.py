@@ -9,6 +9,6 @@ class Quadrants (str, Enum):
 
 class Compass(str, Enum):
     NORTH = "North"
+    EAST = "East"
     SOUTH = "South"
     WEST = "West"
-    EAST = "East"
