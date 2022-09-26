@@ -1,10 +1,12 @@
 from random import randint
 
 class Robot:
-    def __init__(self, name: str, age: int):
+    def __init__(self, name: str, age: int, position: Tuple[int, int]):
         self.name = name
         self.age = age
-        self.robot_id = randint(0, 1000)
+        self.robot_id = randint(0, 100)
+        self.position = position
+        self.direction = None
 
     @classmethod
     def create_from_user_input(cls):
