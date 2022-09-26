@@ -13,6 +13,18 @@ class RobotFactory:
         robot_design: RobotDesign = RobotDesign.RANDOM,
     ):
         self.world = world
+        self.population = self._create_population(number_of_robots, robot_design)
+
+    def _create_population(
+        self,
+        number_of_robots: int,
+        robot_design: RobotDesign,
+    ):
+        list_of_robots = []
+        for i in range(number_of_robots):
+            new_robot = self.add_robot(robot_design)
+            list_of_robots.append(new_robot)
+        return list_of_robots
 
     def add_robot(
         self,
