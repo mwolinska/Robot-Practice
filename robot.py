@@ -54,3 +54,7 @@ class Robot:
 
     def say_hello(self):
         print(f"Hello my name is {self.name}, my age is {self.age}. My ID is {self.robot_id}")
+
+    def give_position_update(self, world: World):
+        quadrant = world.find_quadrant(self.position)
+        print(f"I am in position {self.position}, this is the {quadrant.value}. I am facing {self.direction}.")
