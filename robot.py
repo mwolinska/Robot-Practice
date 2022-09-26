@@ -57,4 +57,4 @@ class Robot:
 
     def give_position_update(self, world: World):
         quadrant = world.find_quadrant(self.position)
-        print(f"I am in position {self.position}, this is the {quadrant.value}. I am facing {self.direction}.")
+        print(f"I am in position {self.position}, this is the {quadrant}. I am facing {self.direction}.")
