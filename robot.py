@@ -8,6 +8,7 @@ from utils import get_name_from_input, get_age_from_input, get_starting_position
     generate_random_starting_point
 from world import World
 
+
 class Robot:
     def __init__(self, name: str, age: int, position: Tuple[int, int]):
         self.name = name

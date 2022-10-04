@@ -1,10 +1,8 @@
 import pathlib
-from random import randint
-from typing import List, Optional
+from typing import Optional
 
-from data_model import RobotDesign
 from robot import Robot
-from utils import generate_random_starting_point, find_number_of_lines_in_file, request_user_inputs
+from utils import find_number_of_lines_in_file, request_user_inputs
 from world import World
 
 
