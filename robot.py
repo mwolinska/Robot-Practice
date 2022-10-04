@@ -4,7 +4,10 @@ from random import randint
 from typing import Tuple
 
 from data_model import Compass
+from utils import get_name_from_input, get_age_from_input, get_starting_position_from_input, \
+    generate_random_starting_point
 from world import World
+
 
 class Robot:
     def __init__(self, name: str, age: int, position: Tuple[int, int]):
@@ -18,42 +21,24 @@ class Robot:
     def create_random(cls, world: World):
         robot_name = "Random Robot"
         robot_age = randint(0, 10)
-        robot_position = cls.generate_random_starting_point(world)
+        robot_position = generate_random_starting_point(world)
         return cls(robot_name, robot_age, robot_position)
 
     @classmethod
     def create_from_user_input(cls, world: World):
-        robot_name = cls.get_name_from_input()
-        robot_age = cls.get_age_from_input()
-        robot_position = cls.get_starting_position_from_input(world)
+        robot_name = get_name_from_input()
+        robot_age = get_age_from_input()
+        robot_position = get_starting_position_from_input(world)
         return cls(robot_name, robot_age, robot_position)
 
-    @staticmethod
-    def get_name_from_input():
-        print("What is your robot's name?")
-        new_name = input()
-        return new_name
+    @classmethod
+    def pre_build_robot(cls, robot_name, robot_age, robot_position):
+        def build_robot():
+            return cls(robot_name, robot_age, robot_position)
+        return build_robot
 
-    @staticmethod
-    def get_age_from_input():
-        print("What is your robot's age?")
-        new_age = int(input())
-        return new_age
-
-    @staticmethod
-    def get_starting_position_from_input(world: World):
-        print("Which row is your robot starting in?")
-        row = int(input())
-        print("Which column is your robot starting in?")
-        column = int(input())
-        return row, column
-
-    @staticmethod
-    def generate_random_starting_point(world: World):
-        position_row = randint(0, world.board.shape[1] - 1)
-        position_column = randint(0, world.board.shape[0] - 1)
-        return position_row, position_column
-
+    def observe(self, world: World):
+        self.observations = world.get_observations(self.position)
 
     def say_hello(self):
         print(f"Hello my name is {self.name}, my age is {self.age}. My ID is {self.robot_id}")
@@ -68,8 +53,8 @@ class Robot:
         while self.position != world.treasure_position:
             world = self.go_forward(world)
             self.give_position_update(world)
-
         print("I found the treasure!")
+        return world
 
     def go_forward(self, world: World) -> World:
         new_row = copy.deepcopy(self.position[0])
