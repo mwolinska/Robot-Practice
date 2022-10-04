@@ -30,11 +30,11 @@ class Robot:
         robot_position = get_starting_position_from_input(world)
         return cls(robot_name, robot_age, robot_position)
 
-    @staticmethod
-    def get_name_from_input():
-        print("What is your robot's name?")
-        new_name = input()
-        return new_name
+    @classmethod
+    def pre_build_robot(cls, robot_name, robot_age, robot_position):
+        def build_robot():
+            return cls(robot_name, robot_age, robot_position)
+        return build_robot
 
     def observe(self, world: World):
         self.observations = world.get_observations(self.position)
