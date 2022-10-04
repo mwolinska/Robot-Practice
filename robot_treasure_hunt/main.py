@@ -1,5 +1,5 @@
-from robot_treaure_hunt.robot_factory import RobotFactory
-from robot_treaure_hunt.world import World
+from robot_treasure_hunt.robot_factory import RobotFactory
+from robot_treasure_hunt.world import World
 
 
 def run_from_file():
@@ -18,4 +18,4 @@ def run_from_random():
     robot_factory.deploy_all_robots_to_treasure_hunt()
 
 if __name__ == '__main__':
-    run_from_user_input()
+    run_from_random()

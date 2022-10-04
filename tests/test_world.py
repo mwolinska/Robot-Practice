@@ -1,7 +1,7 @@
 import pytest
 
-from robot_treaure_hunt.world import World
-from robot_treaure_hunt.data_model import Quadrants
+from robot_treasure_hunt.world import World
+from robot_treasure_hunt.data_model import Quadrants
 
 
 @pytest.mark.parametrize(["func_input", "expected_value"],

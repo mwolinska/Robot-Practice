@@ -4,7 +4,7 @@ from typing import Tuple
 
 import numpy as np
 
-from data_model import Quadrants
+from robot_treasure_hunt.data_model import Quadrants
 
 
 class World:

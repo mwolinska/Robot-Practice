@@ -1,9 +1,10 @@
 import pathlib
 from typing import Optional, Generator, TextIO
 
-from robot_treaure_hunt.robot import Robot
-from robot_treaure_hunt.utils import find_number_of_lines_in_file, request_user_inputs
-from robot_treaure_hunt.world import World
+from robot_treasure_hunt.robot import Robot
+from robot_treasure_hunt.utils import find_number_of_lines_in_file, \
+    request_user_inputs
+from robot_treasure_hunt.world import World
 
 
 class RobotFactory:
