@@ -15,6 +15,7 @@ class RobotFactory:
     ):
         self.world = world
         self.list_of_robots = []
+        self.__robot_generator = None
 
     @classmethod
     def from_file(cls, world, file_path_string: str):
@@ -91,6 +92,14 @@ class RobotFactory:
                 yield lambda: Robot.create_random(self.world)
         print("should return none")
         yield None
+
+    @property
+    def robot_generator(self):
+        return self.__robot_generator
+
+    @robot_generator.setter
+    def robot_generator(self, robot_generator):
+        self.__robot_generator = robot_generator
 
     def deploy_all_robots_to_treasure_hunt(self):
         for robot in self.list_of_robots:
