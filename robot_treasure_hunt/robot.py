@@ -3,11 +3,11 @@ import random
 from random import randint
 from typing import Tuple
 
-from robot_treaure_hunt.data_model import Compass
-from robot_treaure_hunt.utils import get_name_from_input, get_age_from_input, \
+from robot_treasure_hunt.data_model import Compass
+from robot_treasure_hunt.utils import get_name_from_input, get_age_from_input, \
     get_starting_position_from_input, \
     generate_random_starting_point
-from robot_treaure_hunt.world import World
+from robot_treasure_hunt.world import World
 
 
 class Robot:

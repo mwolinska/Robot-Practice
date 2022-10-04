@@ -1,7 +1,7 @@
 import pathlib
 from random import randint
 
-from world import World
+from robot_treasure_hunt.world import World
 
 
 def get_name_from_input():
@@ -42,7 +42,8 @@ def find_number_of_lines_in_file(file_name: pathlib.Path) -> int:
         Number of lines in a file
 
     TODO:
-        * (Marta): If there are empty lines between robot names they are counted as robots - handle potential bug.
+        * (Marta): If there are empty lines between robot names
+        they are counted as robots - handle potential bug.
     """
     file = file_name.open()
     line_counter = 0
