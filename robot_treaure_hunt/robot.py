@@ -3,10 +3,10 @@ import random
 from random import randint
 from typing import Tuple
 
-from data_model import Compass
-from utils import get_name_from_input, get_age_from_input, get_starting_position_from_input, \
+from robot_treaure_hunt.data_model import Compass
+from robot_treaure_hunt.utils import get_name_from_input, get_age_from_input, get_starting_position_from_input, \
     generate_random_starting_point
-from world import World
+from robot_treaure_hunt.world import World
 
 
 class Robot:
@@ -16,6 +16,7 @@ class Robot:
         self.robot_id = randint(0, 100)
         self.position = position
         self.direction = random.choice(list(Compass))
+        self.observations = {}
 
     @classmethod
     def create_random(cls, world: World):
@@ -44,6 +45,7 @@ class Robot:
         print(f"Hello my name is {self.name}, my age is {self.age}. My ID is {self.robot_id}")
 
     def give_position_update(self, world: World):
+        # self.observe(world)
         quadrant = world.find_quadrant(self.position)
         print(f"I am in position {self.position}, this is the {quadrant} quadrant. I am facing {self.direction}.")
 

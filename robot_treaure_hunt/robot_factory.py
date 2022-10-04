@@ -1,9 +1,9 @@
 import pathlib
 from typing import Optional
 
-from robot import Robot
-from utils import find_number_of_lines_in_file, request_user_inputs
-from world import World
+from robot_treaure_hunt.robot import Robot
+from robot_treaure_hunt.utils import find_number_of_lines_in_file, request_user_inputs
+from robot_treaure_hunt.world import World
 
 
 class RobotFactory:
@@ -109,3 +109,11 @@ class RobotFactory:
 
         print("All robots found the treasure.")
 
+
+if __name__ == '__main__':
+    new_world = World()
+    # robot_factory = RobotFactory.from_file(new_world, "robot_names.txt")
+
+    robot_factory = RobotFactory.from_user_input(new_world, 1)
+    robot_factory.deploy_all_robots_to_treasure_hunt()
+    # print()

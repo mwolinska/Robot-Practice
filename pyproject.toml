@@ -3,6 +3,9 @@ name = "robot-practice"
 version = "0.1.0"
 description = "Robot traverses a grid to find his favourite beverage."
 authors = ["Marta Wolinska"]
+packages = [
+    { include = "robot_treasure_hunt" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -14,3 +17,8 @@ pytest = "^7.1.3"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+run_from_file = "robot_treasure_hunt.main:run_from_file"
+run_from_user_input = "robot_treasure_hunt.main:run_from_user_input"
+run_from_random = "robot_treasure_hunt.main:run_from_random"
