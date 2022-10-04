@@ -16,7 +16,7 @@ class Robot:
         self.robot_id = randint(0, 100)
         self.position = position
         self.direction = random.choice(list(Compass))
-        self.observations = {}
+        # self.observations = {}
 
     @classmethod
     def create_random(cls, world: World):
@@ -38,8 +38,8 @@ class Robot:
             return cls(robot_name, robot_age, robot_position)
         return build_robot
 
-    def observe(self, world: World):
-        self.observations = world.get_observations(self.position)
+    # def observe(self, world: World):
+    #     self.observations = world.get_observations(self.position)
 
     def say_hello(self):
         print(f"Hello my name is {self.name}, my age is {self.age}. My ID is {self.robot_id}")
