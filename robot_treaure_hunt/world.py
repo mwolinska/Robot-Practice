@@ -50,3 +50,5 @@ class World:
         self.board[treasure_row][treasure_column] = 111
         return treasure_row, treasure_column
 
+    # def get_observations(self, position):
+    #     return self.find_quadrant(position)
