@@ -52,8 +52,8 @@ class Robot:
         while self.position != world.treasure_position:
             world = self.go_forward(world)
             self.give_position_update(world)
-
         print("I found the treasure!")
+        return world
 
     def go_forward(self, world: World) -> World:
         new_row = copy.deepcopy(self.position[0])
