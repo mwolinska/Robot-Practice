@@ -30,10 +30,10 @@ class RobotFactory:
 
     @classmethod
     def from_random(cls, world: World, n_robots: int):
-        # new_robot_factory = cls(world)
-        # generator, file = new_robot_factory.place_order(n_robots, RobotDesign.RANDOM)
-        # new_robot_factory.build_order(generator, file)
-        pass
+        new_robot_factory = cls(world)
+        generator, file = new_robot_factory.place_order(n_robots)
+        new_robot_factory.build_order(generator, file)
+        return new_robot_factory
 
     @classmethod
     def from_user_input(cls, world: World, n_robots: int):
