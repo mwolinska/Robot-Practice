@@ -109,16 +109,25 @@ class Robot:
         self.say_hello()
         self.give_position_update(world)
         while self.position != world.treasure_position:
-            world = self.go_forward(world)
+            world = self.try_to_go_forward(world)
             self.give_position_update(world)
         print("I found the treasure!")
         return world
 
-    def go_forward(self, world: World) -> World:
+    def try_to_go_forward(self, world: World) -> World:
         """Move robot forwards until a wall is hit."""
+        new_row, new_column = self.return_position_based_on_direction()
+        if self.is_position_wall((new_row, new_column), world):
+            self.turn_90_deg_clockwise()
+        else:
+            self.position = new_row, new_column
+            world.board[new_row][new_column] = self.robot_id
+            # print(world.board)
+        return world
+
+    def return_position_based_on_direction(self):
         new_row = copy.deepcopy(self.position[0])
         new_column = copy.deepcopy(self.position[1])
-
         if self.direction == Compass.NORTH:
             new_row -= 1
         elif self.direction == Compass.SOUTH:
@@ -128,17 +137,21 @@ class Robot:
         elif self.direction == Compass.EAST:
             new_column += 1
 
-        if new_row < 0 \
-                or new_row >= world.board.shape[1] \
-                or new_column < 0 \
-                or new_column >= world.board.shape[0]:
+        return new_row, new_column
+
+    def is_position_wall(
+        self,
+        potential_new_position: Tuple[int, int],
+        world: World
+    ) -> bool:
+        if potential_new_position[0] < 0 \
+                or potential_new_position[0] >= world.board.shape[1] \
+                or potential_new_position[1] < 0 \
+                or potential_new_position[1] >= world.board.shape[0]:
             print("Oh no, I hit a wall. I will turn 90 degrees.")
-            self.turn_90_deg_clockwise()
+            return True
         else:
-            self.position = new_row, new_column
-            world.board[new_row][new_column] = self.robot_id
-            print(world.board)
-        return world
+            return False
 
     def turn_90_deg_clockwise(self):
         """Change robot direction by 90 degrees clockwise following compass."""

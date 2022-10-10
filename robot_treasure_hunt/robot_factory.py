@@ -174,7 +174,6 @@ class RobotFactory:
 
         Sequentially launches all robots from self.list_of_robots to
         complete the treasure hunt.
-
         """
         for robot in self.list_of_robots:
             world = robot.find_treasure(self.world)
