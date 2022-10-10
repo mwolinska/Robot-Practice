@@ -38,9 +38,9 @@ class World:
                 and position_tuple[1] < column_boundary:
             return Quadrants.TOP_LEFT
         elif position_tuple[0] <= row_boundary \
-                and position_tuple[1] > column_boundary:
+                and position_tuple[1] >= column_boundary:
             return Quadrants.TOP_RIGHT
-        elif position_tuple[0] > row_boundary \
+        elif position_tuple[0] >= row_boundary \
                 and position_tuple[1] <= column_boundary:
             return Quadrants.BOTTOM_LEFT
         elif position_tuple[0] >= row_boundary \
